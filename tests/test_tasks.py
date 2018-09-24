@@ -11,6 +11,9 @@ class TestToDo_1(TestCase):
     def setUp(self):
         self.todo_1 = ToDo('test commandline application')
 
+    def tearDown(self):
+        ToDo.todos = []
+
     def test_create_todo_item(self):
         self.assertIsInstance(self.todo_1, ToDo)
         self.assertEqual(self.todo_1.body, 'test commandline application')
@@ -31,6 +34,7 @@ class TestToDo_1(TestCase):
         self.assertEqual(todo.body, 'test commandline application')
 
     def test_to_fetch_todo_item_with_unknown_body(self):
+        self.todo_1.insert_todo(self.todo_1)
         todo = ToDo.get_todo_by_body('perfect writting unittests in python')
         self.assertEqual(todo, 'todo_item does not exist')
 
@@ -43,6 +47,14 @@ class TestToDo_2(TestCase):
     """
     def setUp(self):
         self.todo_2 = ToDo('separating test cases')
+        self.todo_3 = ToDo('fixing delete tests')
+
+    def tearDown(self):
+        ToDo.todos = []
+
+    def test_cant_delete_todo_item(self):
+        message = ToDo.delete_todo(self.todo_2.body)
+        self.assertEqual(message, 'no items available')
 
     def test_edit_todo_item(self):
         self.todo_2.insert_todo(self.todo_2)
@@ -50,11 +62,19 @@ class TestToDo_2(TestCase):
         self.assertIsInstance(todo, ToDo)
         self.assertEqual(todo.done, True)
 
-    def test_successful_delete_todo_item(self):
+    def test_successfully_delete_todo_item(self):
+        self.todo_2.insert_todo(self.todo_2)
         message = ToDo.delete_todo(self.todo_2.body)
         self.assertEqual(message, 'Todo_item separating test cases deleted successfully')
 
+    def test_cant_delete_all_todo_items(self):
+        response = ToDo.delete_all_todos()
+        self.assertEqual(response, 'no items available')
+
     def test_to_delete_all_todo_items(self):
+        self.todo_2.insert_todo(self.todo_2)
+        self.todo_3.insert_todo(self.todo_3)
+
         response = ToDo.delete_all_todos()
 
         self.assertIsInstance(response, list)
