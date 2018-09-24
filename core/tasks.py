@@ -54,9 +54,9 @@ class ToDo(object):
             # return response after the method call
             return 'no items available'
         # iterate through the todos list to find the matching item
-        for t in cls.todos:
-            if t.body == body:
-                cls.todos.remove(t)
+        for tdo in cls.todos:
+            if tdo.body == body:
+                cls.todos.remove(tdo)
                 # print response to the console
                 print('Todo_item ' + body + ' deleted successfully')
                 # return response after the method call
