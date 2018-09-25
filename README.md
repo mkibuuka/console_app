@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/mkibuuka/console_app.svg?branch=tests)](https://travis-ci.org/mkibuuka/console_app) [![Coverage Status](https://coveralls.io/repos/github/mkibuuka/console_app/badge.svg?branch=tests)](https://coveralls.io/github/mkibuuka/console_app?branch=tests)
+[![Build Status](https://travis-ci.org/mkibuuka/console_app.svg?branch=tests)](https://travis-ci.org/mkibuuka/console_app) [![Coverage Status](https://coveralls.io/repos/github/mkibuuka/console_app/badge.svg?branch=tests)](https://coveralls.io/github/mkibuuka/console_app?branch=tests) [![Maintainability](https://api.codeclimate.com/v1/badges/f46d770b7129ea961a40/maintainability)](https://codeclimate.com/github/mkibuuka/console_app/maintainability)
 
 ### My Todo-List console application
 My Todo-List web application facilates users with the ability to create lists of activities or chores or tasks that they plan to implement at various periods of time.
