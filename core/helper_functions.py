@@ -4,7 +4,7 @@ from core.todo_list import ToDoList
 
 
 # Helper functions
-def user_input_validation(username):
+def user_signup_validation(username):
     if username:
         email = input('Please provide a email: ')
     else:
@@ -30,29 +30,7 @@ def user_input_validation(username):
         return
 
 
-def user_signup_and_login():
-    # get the username from the user
-    username = input('Please provide a username: ')
-    # check if the user has provided a name
-    # if true then prompt the user for an email address
-    user_input_validation(username)
-    # if the user has been successfully created, then ask the
-    # user user if he would like to login into his new account
-    print('Do you want to login into your new account?')
-    login = input('Enter (y/n):')
-    # if yes, then call the user_login helper method to login the user
-    if login == 'y':
-        user_login()
-    # if not, thank the user for creating an account and return
-    if login == 'n':
-        print('Thank you for creating your first todo-list account')
-
-
-def user_login():
-    # get the username from the user
-    username = input('Please provide a username: ')
-    # check if the user has provided a name
-    # if true then prompt the user for a password
+def user_login_validation(username):
     if username:
         password = input('Please provide a password: ')
     # else still prompt the user for the username
@@ -77,6 +55,32 @@ def user_login():
     else:
         print('You must provide a password')
         return
+
+
+def user_signup_and_login():
+    # get the username from the user
+    username = input('Please provide a username: ')
+    # check if the user has provided a name
+    # if true then prompt the user for an email address
+    user_signup_validation(username)
+    # if the user has been successfully created, then ask the
+    # user user if he would like to login into his new account
+    print('Do you want to login into your new account?')
+    login = input('Enter (y/n):')
+    # if yes, then call the user_login helper method to login the user
+    if login == 'y':
+        user_login()
+    # if not, thank the user for creating an account and return
+    if login == 'n':
+        print('Thank you for creating your first todo-list account')
+
+
+def user_login():
+    # get the username from the user
+    username = input('Please provide a username: ')
+    # check if the user has provided a name
+    # if true then prompt the user for a password
+    user_login_validation(username)
 
 
 def todo_functions():
