@@ -72,12 +72,13 @@ class ToDo(object):
         """
         # iterate through the todos list to find the matching item
         tdo = [td for td in cls.todos if td.body == body]
-        if tdo[0].done is False and done is not None:
+        if not len(tdo) == 0 and tdo[0].done is False and done is not None:
             tdo[0].done = done
             # print response to the console
             print('done:', tdo[0].done)
             # return response after the method call
             return tdo[0]
+        print('item ' + body + ' doesnot exist')
 
     @classmethod
     def delete_all_todos(cls):
