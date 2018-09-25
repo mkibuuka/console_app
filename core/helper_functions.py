@@ -140,11 +140,19 @@ def todolist_item_independent_choices(choice):
         delete_all_items()
 
 
-def new_todo_list():
-    title = input('Enter a todo_list title:')
-    if title:
+def create(body=None, title=None):
+    if title is not None:
         todo_list = ToDoList(title=title)
         todo_list.insert_todo_list(todo_list)
+
+    if body is not None:
+        todo_item = ToDo(body=body)
+        todo_item.insert_todo(todo_item)
+
+
+def new_todo_list():
+    title = input('Enter a todo_list title:')
+    create(title=title)
 
 
 def delete_list():
@@ -154,9 +162,7 @@ def delete_list():
 
 def new_todo_item():
     body = input('Enter a todo_item body:')
-    if body:
-        todo_item = ToDo(body=body)
-        todo_item.insert_todo(todo_item)
+    create(body=body)
 
 
 def fetch_todo_item():
